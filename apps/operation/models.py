@@ -56,7 +56,7 @@ class UserMessage(models.Model):
         verbose_name_plural = verbose_name
 
 
-class UserCourse(models.Model):
+class UserDrama(models.Model):
     user = models.ForeignKey(UserProfile, verbose_name=u"用户")
     drama = models.ForeignKey(Drama, verbose_name=u"番剧")
     add_time = models.DateTimeField(default=datetime.now, verbose_name=u"添加时间")
