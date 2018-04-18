@@ -17,6 +17,7 @@ import sys
 # 添加加载apps的目录
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -30,7 +31,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# # Application definition
+# AUTHENTICATION_BACKENDS = (
+#     'users.views.CustomBackend',
+# )
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,7 +46,12 @@ INSTALLED_APPS = [
     'users',
     'dramas',
     'organization',
-    'operation'
+    'operation',
+    'xadmin',
+    'crispy_forms'
+    # 'captcha',
+    # 'pure_pagination',
+    # 'DjangoUeditor',
 ]
 
 # 自定义表时添加此格式属性,label.被覆盖的Profile
@@ -73,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.media',
             ],
         },
     },
@@ -116,18 +126,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
-
-USE_TZ = True
+# 所以本地时间格式
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
